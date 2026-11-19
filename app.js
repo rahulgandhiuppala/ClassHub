@@ -1,6 +1,6 @@
 // ClassHub frontend. Set these two public Supabase values from Project Settings > API.
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://ahtjpngivpxhmhjqglce.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_b-jHgT_UM0tXU62cJ0WwmA_D_qyPbb9";
 const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && !SUPABASE_ANON_KEY.includes("YOUR_");
 const $ = (s) => document.querySelector(s);
 let client = null, currentProfile = null;
