@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172554"><title>ClassHub | Your Class, One Platform</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="brand-mark">C</span><span>ClassHub</span></a><span class="tagline">Your class. One platform.</span><button id="logoutBtn" class="btn btn-quiet hidden">Log out</button></header>
+<main>
+<section id="setupNotice" class="notice hidden"><strong>Almost ready!</strong> Add your Supabase project URL and public anon key in <code>app.js</code>, then run the database setup in <code>supabase-schema.sql</code>.</section>
+<section id="authView" class="auth-layout">
+  <div class="welcome"><p class="eyebrow">LEARN • SHARE • GROW</p><h1>Everything your class needs, <span>in one place.</span></h1><p>Share notes, stay updated, manage assignments and learn together.</p><div class="feature-pills"><span>📚 Study materials</span><span>📢 Announcements</span><span>📝 Assignments</span></div></div>
+  <div class="panel auth-panel"><div class="tabs"><button class="tab active" data-tab="login">Log in</button><button class="tab" data-tab="signup">Create account</button></div>
+    <form id="loginForm" class="stack"><h2>Welcome back</h2><label>Email<input name="email" type="email" placeholder="you@example.com" required></label><label>Password<input name="password" type="password" placeholder="Your password" required></label><button class="btn btn-primary" type="submit">Log in</button></form>
+    <form id="signupForm" class="stack hidden"><h2>Join your class</h2><label>Full name<input name="name" placeholder="Your full name" required></label><label>Email<input name="email" type="email" placeholder="you@example.com" required></label><label>Password<input name="password" type="password" minlength="8" placeholder="At least 8 characters" required></label><label>Class invite code<input name="classCode" placeholder="Ask your teacher" required></label><button class="btn btn-primary" type="submit">Create account</button><p class="muted small">Only students with your teacher's invite code can join.</p></form>
+    <p id="authMessage" class="message" role="status"></p>
+  </div>
+</section>
+<section id="appView" class="hidden">
+  <div class="dashboard-head"><div><p class="eyebrow">CLASS DASHBOARD</p><h1>Hey, <span id="userName">student</span> 👋</h1><p class="muted">Your class updates and learning resources.</p></div><span id="rolePill" class="role-pill">STUDENT</span></div>
+  <nav class="dash-tabs"><button class="dash-tab active" data-view="home">Overview</button><button class="dash-tab" data-view="notes">Study materials</button><button class="dash-tab" data-view="assignments">Assignments</button><button class="dash-tab" data-view="announcements">Announcements</button></nav>
+  <section id="homeView" class="content-grid"><div class="panel"><div class="section-title"><div><p class="eyebrow">LATEST</p><h2>Announcements</h2></div></div><div id="homeAnnouncements" class="items"><p class="muted">Loading…</p></div></div><div class="panel"><p class="eyebrow">YOUR CLASS</p><h2>Learn together</h2><p class="muted">Upload helpful notes, check deadlines and keep in touch with your classmates.</p><div class="quick-links"><button class="btn btn-soft" data-jump="notes">📚 Browse materials</button><button class="btn btn-soft" data-jump="assignments">📝 View assignments</button></div></div></section>
+  <section id="notesView" class="panel hidden"><div class="section-title"><div><p class="eyebrow">SHARED RESOURCES</p><h2>Study materials</h2></div></div><form id="uploadForm" class="upload-row"><label class="grow">Title<input name="title" placeholder="e.g. Unit 1 notes" required></label><label>Choose file<input name="file" type="file" required></label><button class="btn btn-primary" type="submit">Upload</button></form><p class="muted small">PDF, documents and images. Maximum 15 MB per file.</p><div id="notesList" class="items"></div></section>
+  <section id="assignmentsView" class="panel hidden"><div class="section-title"><div><p class="eyebrow">STAY ON TRACK</p><h2>Assignments</h2></div></div><form id="assignmentForm" class="stack admin-only hidden"><label>Assignment title<input name="title" required></label><label>Instructions<textarea name="details" rows="3" required></textarea></label><label>Due date<input name="dueDate" type="date"></label><button class="btn btn-primary">Post assignment</button></form><div id="assignmentsList" class="items"></div></section>
+  <section id="announcementsView" class="panel hidden"><div class="section-title"><div><p class="eyebrow">CLASS UPDATES</p><h2>Announcements</h2></div></div><form id="announcementForm" class="stack admin-only hidden"><label>Announcement title<input name="title" required></label><label>Message<textarea name="body" rows="3" required></textarea></label><button class="btn btn-primary">Publish announcement</button></form><div id="announcementsList" class="items"></div></section>
+</section>
+</main><footer>ClassHub <span>•</span> Built for learning together</footer>
+<div id="toast" class="toast" role="status"></div>
+</body></html>
